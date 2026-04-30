@@ -1,8 +1,8 @@
-# SQL-Projects
+# Customer Behavior Analysis 
 
 Overview
 
-This project focuses on analyzing customer transaction data using SQL. The goal is to extract meaningful business insights such as revenue trends, customer behavior, product performance, and segmentation.
+This project focuses on EDA using Python and analyzing customer transaction data using SQL. The goal is to extract meaningful business insights such as revenue trends, customer behavior, product performance, and segmentation.
 
 Dataset
 File: Customers.csv
