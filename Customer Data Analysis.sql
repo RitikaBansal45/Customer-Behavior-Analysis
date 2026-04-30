@@ -1,8 +1,10 @@
 
 use customers
 
+-- data set
 select * from Customers
 
+-- total amount spend by gender
 select
 Gender,
 sum(cast(Amount as int)) as revenue
@@ -11,6 +13,7 @@ Customers
 group by
 Gender
 
+-- shipping method used
 select
 Shipping_Type,
 count(Customer_ID) as total_customers,
@@ -23,6 +26,7 @@ order by
 revenue desc, 
 total_customers desc
 
+-- discount is applied and spent is more than avg
 select
 Customer_ID,
 cast(Amount as int) as revenue
@@ -31,6 +35,8 @@ Customers
 where
 Discount_Applied = 'Yes' and Amount >= (select AVG(cast(Amount as int)) from Customers)
 
+
+-- top rated items
 select Top 5
 Item,
 round(avg(cast(Review_Rating as float)),2) as average_review_rating
@@ -41,6 +47,7 @@ Item
 order by
 average_review_rating desc
 
+-- total customers and avg revenue as per subsription status
 select 
 Subscription_Status,
 count(Customer_ID) as total_customers,
@@ -50,6 +57,7 @@ Customers
 group by
 Subscription_Status
 
+-- New, Recurring and loyal customers
 with customer_type as (
 select
 Customer_ID,
@@ -69,6 +77,7 @@ customer_type
 group by
 customer_category
 
+-- season wise revenue
 select
 Season,
 sum(cast(Amount as int)) as revenue
@@ -78,6 +87,7 @@ Season
 order by
 revenue desc
 
+-- top 1 category
 select Top 1
 Category,
 sum(cast(Amount as int)) as revenue
@@ -87,6 +97,7 @@ Category
 order by
 revenue desc
 
+-- Items in clothing (top category)
 select
 Item,
 sum(cast(Amount as int)) as revenue
@@ -98,7 +109,8 @@ group by
 Item
 order by
 revenue desc
-
+ 
+-- Young, adult and senior customers analysis
 with customer_group as (
 select
 Customer_ID,
